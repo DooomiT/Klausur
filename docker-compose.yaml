@@ -2,7 +2,7 @@ version: '3'
 services: 
   dhbw-seminarbeit-receivedata:
     environment:
-        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1/events:4005"
+        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1:4005/events"
     build: dhbw-seminarbeitWS2020-receivedata/.
     ports:
       - "4000:4000"
@@ -11,8 +11,7 @@ services:
     env_file:
     - .env
     environment:
-        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1/events:4005"
-        MONGO_ENDPOINT: "http://mongodb:27017"
+        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1:4005/events"
         MONGO_HOSTNAME: ${MONGO_HOSTNAME}
         MONGO_PORT:     ${MONGO_PORT}
         MONGO_USERNAME: ${MONGO_INITDB_USERNAME}
@@ -24,7 +23,7 @@ services:
     image: dhbw-seminarbeit-displaydata
   dhbw-seminarbeit-eventbus:
     environment:
-        DISPLAYDATA_ENDPOINT: "http://klausur_dhbw-seminarbeit-displaydata_1/events:4001"
+        DISPLAYDATA_ENDPOINT: "http://klausur_dhbw-seminarbeit-displaydata_1:4001/events"
     build: dhbw-seminarbeitWS2020-eventbus/.
     ports:
       - "4005:4005"
