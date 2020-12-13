@@ -1,0 +1,51 @@
+version: '3'
+services: 
+  dhbw-seminarbeit-receivedata:
+    environment:
+        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1/events:4005"
+    build: dhbw-seminarbeitWS2020-receivedata/.
+    ports:
+      - "4000:4000"
+    image: dhbw-seminarbeit-receivedata
+  dhbw-seminarbeit-displaydata:
+    env_file:
+    - .env
+    environment:
+        EVENT_BUS_ENDPOINT: "http://klausur_dhbw-seminarbeit-eventbus_1/events:4005"
+        MONGO_ENDPOINT: "http://mongodb:27017"
+        MONGO_HOSTNAME: ${MONGO_HOSTNAME}
+        MONGO_PORT:     ${MONGO_PORT}
+        MONGO_USERNAME: ${MONGO_INITDB_USERNAME}
+        MONGO_PASSWORD: ${MONGO_INITDB_PASSWORD}
+        MONGO_DATABASE: ${MONGO_INITDB_DATABASE}
+    build: dhbw-seminarbeitWS2020-displaydata/.
+    ports:
+      - "4001:4001"
+    image: dhbw-seminarbeit-displaydata
+  dhbw-seminarbeit-eventbus:
+    environment:
+        DISPLAYDATA_ENDPOINT: "http://klausur_dhbw-seminarbeit-displaydata_1/events:4001"
+    build: dhbw-seminarbeitWS2020-eventbus/.
+    ports:
+      - "4005:4005"
+    image: dhbw-seminarbeit-eventbus
+  mongo:
+    image: "mongo"
+    hostname: localhost
+    ports:
+      - "27017:27017"
+    container_name: mongodb
+    volumes: 
+      - '~/mongo/data:/data/mongodb'
+    env_file:
+    - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      MONGO_INITDB_USERNAME: ${MONGO_INITDB_USERNAME}
+      MONGO_INITDB_PASSWORD: ${MONGO_INITDB_PASSWORD}
+networks:
+  default:
+    external:
+      name: dhbw_sem
