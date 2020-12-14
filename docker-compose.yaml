@@ -35,7 +35,7 @@ services:
       - "27017:27017"
     container_name: mongodb
     volumes: 
-      - '~/mongo/data:/data/mongodb'
+      - ./mongo/data:/data/mongodb
       - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     env_file:
     - .env
