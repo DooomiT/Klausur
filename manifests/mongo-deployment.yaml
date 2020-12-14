@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: C:\Program Files (x86)\kompose\kompose.exe convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mongo
+  name: mongo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: mongo
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: C:\Program Files (x86)\kompose\kompose.exe convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/dhbw_sem: "true"
+        io.kompose.service: mongo
+    spec:
+      containers:
+      - env:
+        - name: MONGO_HOSTNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_HOSTNAME
+              name: env
+        - name: MONGO_INITDB_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_INITDB_DATABASE
+              name: env
+        - name: MONGO_INITDB_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_INITDB_PASSWORD
+              name: env
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_INITDB_ROOT_PASSWORD
+              name: env
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_INITDB_ROOT_USERNAME
+              name: env
+        - name: MONGO_INITDB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_INITDB_USERNAME
+              name: env
+        - name: MONGO_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_PORT
+              name: env
+        - name: MONGO_REPLICA_SET_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: MONGO_REPLICA_SET_NAME
+              name: env
+        image: mongo:latest
+        imagePullPolicy: ""
+        name: mongodb
+        ports:
+        - containerPort: 27019
+        resources: {}
+      hostname: localhost
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes: null
+status: {}

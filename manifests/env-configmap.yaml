@@ -1,0 +1,16 @@
+apiVersion: v1
+data:
+  MONGO_HOSTNAME: mongodb
+  MONGO_INITDB_DATABASE: co2Ampel
+  MONGO_INITDB_PASSWORD: b
+  MONGO_INITDB_ROOT_PASSWORD: root
+  MONGO_INITDB_ROOT_USERNAME: root
+  MONGO_INITDB_USERNAME: a
+  MONGO_PORT: "27017"
+  MONGO_REPLICA_SET_NAME: rs0
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: dhbw-seminarbeit-displaydata-env
+  name: env

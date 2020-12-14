@@ -20,6 +20,8 @@ services:
     build: dhbw-seminarbeitWS2020-displaydata/.
     ports:
       - "4001:4001"
+    depends_on: 
+      - "mongo"
     image: dhbw-seminarbeit-displaydata
   dhbw-seminarbeit-eventbus:
     environment:
@@ -29,22 +31,16 @@ services:
       - "4005:4005"
     image: dhbw-seminarbeit-eventbus
   mongo:
-    image: "mongo"
+    image: mongo:latest
     hostname: localhost
     ports:
-      - "27017:27017"
+      - "27017:27019"
     container_name: mongodb
     volumes: 
       - ./mongo/data:/data/mongodb
       - ./mongo-init.sh:/docker-entrypoint-initdb.d/mongo-init.sh
     env_file:
     - .env
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
-      MONGO_INITDB_USERNAME: ${MONGO_INITDB_USERNAME}
-      MONGO_INITDB_PASSWORD: ${MONGO_INITDB_PASSWORD}
 networks:
   default:
     external:
