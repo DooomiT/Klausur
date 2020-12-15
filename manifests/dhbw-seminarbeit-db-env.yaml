@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/name: dhbw-seminarbeit-db-env
+  name: dhbw-seminarbeit-db-env
+data:
+  MONGODB_INITIAL_PRIMARY_HOST: mongodb
+  MONGODB_DATABASE: co2Ampel
+  MONGODB_ROOT_PASSWORD: root
+  MONGODB_USERNAME: a
+  MONGODB_PASSWORD: b
+  MONGO_PORT: "27017"

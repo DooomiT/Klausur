@@ -1,1 +1,0 @@
-kubectl apply -f dhbw_sem-networkpolicy.yaml,dhbw-seminarbeit-displaydata-deployment.yaml,dhbw-seminarbeit-displaydata-service.yaml,dhbw-seminarbeit-eventbus-deployment.yaml,dhbw-seminarbeit-eventbus-service.yaml,dhbw-seminarbeit-receivedata-deployment.yaml,dhbw-seminarbeit-receivedata-service.yaml,env-configmap.yaml,mongo-deployment.yaml,mongo-service.yaml  
