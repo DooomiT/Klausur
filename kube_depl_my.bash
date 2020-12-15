@@ -9,5 +9,8 @@ kubectl apply -f dhbw-seminarbeitWS2020-receivedata/manifests/dhbw-seminarbeit-r
 kubectl apply -f dhbw-seminarbeitWS2020-receivedata/manifests/dhbw-seminarbeit-receivedata-service.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-eventbus/manifests/dhbw-seminarbeit-eventbus-deployment.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-displaydata-deployment.yaml
-kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-service.yaml
+kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-displaydata-service.yaml
 
+# Ingress
+kubectl apply -f dhbw-seminarbeitWS2020-receivedata/manifests/dhbw-seminarbeit-receivedata-ingress.yaml
+kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-displaydata-ingress.yaml
