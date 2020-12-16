@@ -1,6 +1,7 @@
 # This is the "Klausuraufgabe" for microservices and Docker
 - created by Florian Bufler
 - MA. Nummer: 1928519
+- Git: https://github.com/DooomiT/Klausur
 
 ## Build
 - first build all the containers and push them onto your registry (could also be done with local images -> you would need to change the image Pull pollicy)
