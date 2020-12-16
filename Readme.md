@@ -6,7 +6,9 @@
 ## Build
 - first build all the containers and push them onto your registry (could also be done with local images -> you would need to change the image Pull pollicy)
   - you could do that via the build_and_tag_all.bash
+  - change <your_repo_name> in build_and_tag_all.bash
 ## Deploy
+- change all deployment manifests to your containername 
 - then deploy everythin on your kubernetes cluster
   - you could do that via the kube_depl.bash
   - the autonomous account creation on the standart mongo image hasn't worked for me that good so i used the bitnami ones
