@@ -6,9 +6,10 @@ metadata:
     app.kubernetes.io/name: dhbw-seminarbeit-db-env
   name: dhbw-seminarbeit-db-env
 data:
-  MONGO_HOSTNAME: mongodb
-  MONGODB_INITIAL_PRIMARY_HOST: mongodb
+  MONGO_HOSTNAME: mongo
+  MONGODB_INITIAL_PRIMARY_HOST: mongo
   MONGODB_DATABASE: co2Ampel
+  MONGODB_ROOT_USERNAME: root
   MONGODB_ROOT_PASSWORD: root
   MONGODB_USERNAME: a
   MONGODB_PASSWORD: b

@@ -12,5 +12,6 @@ kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-d
 kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-displaydata-service.yaml
 
 # Ingress
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/master/docs/examples/docker-registry/deployment.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-receivedata/manifests/dhbw-seminarbeit-receivedata-ingress.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-displaydata/manifests/dhbw-seminarbeit-displaydata-ingress.yaml
