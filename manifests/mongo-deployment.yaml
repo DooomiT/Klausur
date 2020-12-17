@@ -12,37 +12,37 @@ spec:
         app.kubernetes.io/name: mongo
     spec:
       containers:
-      - image: bitnami/mongodb:latest
+      - image: mongo:latest
         name: mongo
         ports:
         - containerPort: 27017
         env:
-          - name: MONGO_INITDB_DATABASE
-            valueFrom: 
-              configMapKeyRef:
-                key: MONGODB_DATABASE
-                name: dhbw-seminarbeit-db-env
-          - name: MONGODB_PASSWORD
-            valueFrom:
-              configMapKeyRef:
-                key: MONGODB_PASSWORD
-                name: dhbw-seminarbeit-db-env
-          - name: MONGO_INITDB_ROOT_PASSWORD
-            valueFrom:
-              configMapKeyRef:
-                key: MONGODB_ROOT_PASSWORD
-                name: dhbw-seminarbeit-db-env
-          - name: MONGO_INITDB_ROOT_USERNAME
-            valueFrom:
-              configMapKeyRef:
-                key: MONGODB_ROOT_USERNAME
-                name: dhbw-seminarbeit-db-env
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: dhbw-seminarbeit-db-env
+              key: MONGODB_ROOT_PASSWORD
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: dhbw-seminarbeit-db-env
+              key: MONGODB_ROOT_USERNAME
+        - name: MONGO_PASSWORD
+          valueFrom:
+            configMapKeyRef:
+              name: dhbw-seminarbeit-db-env
+              key: MONGODB_PASSWORD
+        - name: MONGO_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: dhbw-seminarbeit-db-env
+              key: MONGODB_USERNAME
         volumeMounts:
         - name: mongo-initdb
           mountPath: /docker-entrypoint-initdb.d
       volumes:
       - name: mongo-initdb
-        configMap:  # create this configmap with kubectl create configmap mongo-initdb --from-file=mongo-init.sh
-          name: mongo-initdb 
+        configMap:
+          name: mongo-initdb
       restartPolicy: Always
       serviceAccountName: ""

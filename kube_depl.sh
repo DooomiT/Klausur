@@ -2,6 +2,7 @@
 kubectl apply -f manifests/dhbw-seminarbeit-db-env.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-receivedata/manifests/dhbw-seminarbeit-receivedata-env-configmap.yaml
 kubectl apply -f dhbw-seminarbeitWS2020-eventbus/manifests/dhbw-seminarbeit-eventbus-env-configmap.yaml
+kubectl create configmap mongo-initdb --from-file=manifests/createuser.sh
 
 # Pods / Services
 kubectl apply -f manifests/mongo-deployment.yaml
